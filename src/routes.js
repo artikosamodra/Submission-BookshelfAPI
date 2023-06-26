@@ -25,21 +25,21 @@ const routes = [
   // GetDetail-Book
   {
     method: 'GET',
-    path: '/books/{bookId}',
+    path: '/books/{id}',
     handler: getBookByIdHandler,
   },
 
   // EditData-Book
   {
     method: 'PUT',
-    path: '/books/{bookId}',
+    path: '/books/{id}',
     handler: editBookByIdHandler,
   },
 
   // Delete-Book
   {
     method: 'DELETE',
-    path: '/books/{bookId}',
+    path: '/books/{id}',
     handler: deleteBookByIdHandler,
   },
 
