@@ -148,7 +148,9 @@ const getBookByIdHandler = (request, h) => {
 
 // Handler EditData-Book
 const editBookByIdHandler = (request, h) => {
-  const {id} = request.params;
+  const {
+    id,
+  } = request.params;
 
   const {
     name,
@@ -171,20 +173,21 @@ const editBookByIdHandler = (request, h) => {
         status: 'fail',
         message: 'Gagal memperbarui buku. Mohon isi nama buku',
       });
-
       response.code(400);
+
       return response;
-    };
+    }
 
     // Nilai readPage > pageCount
-    if (readPage > pageCount) {
+    if (pageCount < readPage) {
       const response = h.response({
         status: 'fail',
-        message: 'Gagal memperbarui buku. readPage tidak boleh besar dari pageCount',
+        message: 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount',
       });
       response.code(400);
+
       return response;
-    };
+    }
 
     const finished = (pageCount === readPage);
     books[index] = {
@@ -214,9 +217,10 @@ const editBookByIdHandler = (request, h) => {
   // gagal perbarui karena Id tidak ada
   const response = h.response({
     status: 'fail',
-    message: 'Gagal memperbarui buku, Id buku tidak ditemukan',
+    message: 'Gagal memperbarui buku. Id tidak ditemukan',
   });
   response.code(404);
+
   return response;
 };
 
